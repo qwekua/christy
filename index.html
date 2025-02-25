@@ -24,16 +24,16 @@
             position: relative;
         }
 
-       header img {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 100px; /* Set the width */
-    height: 100px; /* Set the height for a circular shape */
-    border-radius: 50%; /* Make the image circular */
-    object-fit: cover; /* Zoom in and crop the image */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Optional: Add a slight shadow for depth */
-}
+        header img {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
 
         .tagline {
             font-size: 1.3rem;
@@ -46,12 +46,15 @@
             background-color: #2c3e50;
             padding: 1rem;
             text-align: center;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 1.5rem;
+            margin: 0.5rem;
             padding: 0.7rem 1.5rem;
             border-radius: 4px;
             font-weight: 600;
@@ -65,12 +68,12 @@
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 1rem;
         }
 
         .section {
             background: white;
-            padding: 2rem;
+            padding: 1.5rem;
             margin-bottom: 2rem;
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
@@ -78,25 +81,35 @@
 
         .video-container {
             background-color: #f8f9fa;
-            padding: 2rem;
+            padding: 1rem;
             border-radius: 8px;
-            margin-top: 2rem;
+            margin-top: 1.5rem;
             text-align: center;
         }
 
-        .video-placeholder {
-            background-color: #e9ecef;
-            padding: 2rem;
+        #video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+            max-width: 100%;
+        }
+
+        #video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             border-radius: 8px;
-            margin: 1rem 0;
-            border: 2px dashed #6c757d;
         }
 
         .elevator-pitch {
             background-color: #f8f9fa;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
             border-left: 4px solid #3498db;
+            margin-top: 1.5rem;
         }
 
         .contact-email {
@@ -111,31 +124,36 @@
 
         .client-reviews {
             background-color: #f8f9fa;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .review {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
             font-style: italic;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .review p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #333;
         }
 
         .review h4 {
             font-weight: 600;
             color: #3498db;
+            margin-top: 0.5rem;
         }
 
         .contact-form {
             background-color: #f8f9fa;
-            padding: 2rem;
+            padding: 1.5rem;
             border-radius: 8px;
-            margin-top: 3rem;
+            margin-top: 2rem;
         }
 
         .contact-form h2 {
@@ -145,11 +163,12 @@
 
         .form-input {
             width: 100%;
-            padding: 1rem;
+            padding: 0.8rem;
             margin: 0.5rem 0;
             border: 2px solid #ccc;
             border-radius: 4px;
             font-size: 1rem;
+            box-sizing: border-box;
         }
 
         .form-submit {
@@ -176,12 +195,78 @@
             position: relative;
             bottom: 0;
             width: 100%;
+            box-sizing: border-box;
+        }
+
+        .portfolio-links {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .portfolio-links li {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .portfolio-links a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .portfolio-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Mobile Responsive Styles */
+        @media (max-width: 768px) {
+            header {
+                padding: 2rem 1rem 1.5rem;
+            }
+
+            header img {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 0 auto 1rem;
+                display: block;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            nav {
+                flex-direction: column;
+                padding: 0.5rem;
+            }
+
+            nav a {
+                margin: 0.3rem;
+                width: 80%;
+            }
+
+            .section {
+                padding: 1rem;
+            }
+
+            .review p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <img src="./image.jpeg" alt="Christabel Adu Logo"> <!-- Replace with your image path -->
+        <img src="./image.jpeg" alt="Christabel Adu Logo">
         <h1>Christabel Adu</h1>
         <div class="tagline">Aspiring AWS Solutions Architect | Cloud Computing Enthusiast</div>
     </header>
@@ -227,9 +312,14 @@
             
             <div class="video-container">
                 <h3>Elevator Pitch Video</h3>
-                <div class="video-placeholder">
-                    <p>Your elevator pitch video will appear here</p>
-                    <p class="upload-instructions">Upload your video to YouTube and paste the embed code here</p>
+                <div id="video-wrapper">
+                    <iframe 
+                        id="elevator-video"
+                        src="https://www.youtube.com/embed/WcQ3Rj--Ar4?enablejsapi=1&mute=0"
+                        frameborder="0"
+                        allowfullscreen
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture">
+                    </iframe>
                 </div>
             </div>
 
@@ -273,5 +363,67 @@
         <p>&copy; 2025 Christabel Adu | AWS Solutions Architect</p>
         <p>Contact me: <a href="mailto:christabeladu76@gmail.com" class="contact-email">christabeladu76@gmail.com</a></p>
     </footer>
+
+    <script>
+        // Load YouTube API
+        var tag = document.createElement('script');
+        tag.src = "https://www.youtube.com/iframe_api";
+        var firstScriptTag = document.getElementsByTagName('script')[0];
+        firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        var player;
+        var videoPlayed = false;
+        
+        // This function creates the YouTube player once the API code downloads
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('elevator-video', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+        
+        // Function to be called when player is ready
+        function onPlayerReady(event) {
+            // Add the IntersectionObserver for better scroll detection
+            setupIntersectionObserver();
+        }
+        
+        // More accurate way to detect when element is in viewport
+        function setupIntersectionObserver() {
+            const options = {
+                root: null, // use the viewport
+                rootMargin: '0px',
+                threshold: 0.25 // trigger when 25% of the element is visible
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting && !videoPlayed) {
+                        if (player && typeof player.playVideo === 'function') {
+                            // Unmute and play the video
+                            player.unMute();
+                            player.playVideo();
+                            videoPlayed = true;
+                            
+                            // Most browsers require a user gesture, this simulates a click on the video
+                            // to help bypass autoplay restrictions
+                            const wrapper = document.getElementById('video-wrapper');
+                            wrapper.addEventListener('click', function() {
+                                player.playVideo();
+                                player.unMute();
+                            }, { once: true });
+                            
+                            // Simulate a click
+                            wrapper.click();
+                        }
+                    }
+                });
+            }, options);
+            
+            // Start observing the video
+            const videoElement = document.getElementById('video-wrapper');
+            observer.observe(videoElement);
+        }
+    </script>
 </body>
 </html>

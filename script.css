@@ -1,0 +1,62 @@
+<script>
+// Load YouTube API
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+var videoPlayed = false;
+
+// This function creates the YouTube player once the API code downloads
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('elevator-video', {
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+// Function to be called when player is ready
+function onPlayerReady(event) {
+    // Add the IntersectionObserver for better scroll detection
+    setupIntersectionObserver();
+}
+
+// More accurate way to detect when element is in viewport
+function setupIntersectionObserver() {
+    const options = {
+        root: null, // use the viewport
+        rootMargin: '0px',
+        threshold: 0.25 // trigger when 25% of the element is visible
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting && !videoPlayed) {
+                if (player && typeof player.playVideo === 'function') {
+                    // Unmute and play the video
+                    player.unMute();
+                    player.playVideo();
+                    videoPlayed = true;
+                    
+                    // Most browsers require a user gesture, this simulates a click on the video
+                    // to help bypass autoplay restrictions
+                    const wrapper = document.getElementById('video-wrapper');
+                    wrapper.addEventListener('click', function() {
+                        player.playVideo();
+                        player.unMute();
+                    }, { once: true });
+                    
+                    // Simulate a click
+                    wrapper.click();
+                }
+            }
+        });
+    }, options);
+    
+    // Start observing the video
+    const videoElement = document.getElementById('video-wrapper');
+    observer.observe(videoElement);
+}
+</script>
